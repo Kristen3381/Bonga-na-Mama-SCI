@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonga na Mama SCI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white shadow-lg rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-blue-700 mb-2">Bonga na Mama SCI</h1>
+        <p class="text-gray-600 mb-6 italic">Secure. Anonymous. Presidential.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="mb-4 p-3 rounded {% if category == 'success' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form action="/submit" method="POST">
+            <textarea name="feedback" rows="5" class="w-full border p-3 rounded-md focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Share your grievance or suggestion..."></textarea>
+            <button type="submit" class="mt-4 w-full bg-blue-700 text-white font-bold py-2 rounded-md hover:bg-blue-800 transition">Submit Anonymously</button>
+        </form>
+    </div>
+</body>
+</html>
