@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Generate a secret key for security
 app.secret_key = os.urandom(24)
 
-# A simple list to act as a temporary database for now
+# A simple list to act as a temporary DB in the mean time
 feedback_storage = []
 
 @app.route('/')
