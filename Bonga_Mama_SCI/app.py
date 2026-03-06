@@ -38,3 +38,10 @@ def admin_view():
 if __name__ == '__main__':
     # Debug mode is ON for your development on the EliteBook
     app.run(debug=True, port=5000)
+    @app.route('/wistem')
+def wistem():
+    return render_template('wistem.html')
+
+@app.route('/agricycle')
+def agricycle():
+    return render_template('agricycle.html')
