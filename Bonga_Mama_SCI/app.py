@@ -16,6 +16,16 @@ feedback_storage = {
 def index():
     return render_template('index.html')
 
+# --- NEW ROUTES PLACED BEFORE THE RUN COMMAND ---
+@app.route('/wistem')
+def wistem():
+    return render_template('wistem.html')
+
+@app.route('/agricycle')
+def agricycle():
+    return render_template('agricycle.html')
+# ----------------------------------------------
+
 @app.route('/submit', methods=['POST'])
 def submit_feedback():
     message = request.form.get('feedback')
@@ -32,16 +42,8 @@ def submit_feedback():
 
 @app.route('/admin-portal-sci-2026')
 def admin_view():
-    # Only you, the President, should know this URL
     return render_template('admin.html', storage=feedback_storage)
 
 if __name__ == '__main__':
-    # Debug mode is ON for your development on the EliteBook
+    # The run command MUST be the very last thing in the file
     app.run(debug=True, port=5000)
-    @app.route('/wistem')
-def wistem():
-    return render_template('wistem.html')
-
-@app.route('/agricycle')
-def agricycle():
-    return render_template('agricycle.html')
