@@ -2,11 +2,15 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 import os
 
 app = Flask(__name__)
-# Generate a secret key for security
+# Secure secret key for session encryption
 app.secret_key = os.urandom(24)
 
-# A simple list to act as a temporary DB in the mean time
-feedback_storage = []
+# Data structure to separate feedback categories
+feedback_storage = {
+    "ladies": [],
+    "gents": [],
+    "general": []
+}
 
 @app.route('/')
 def index():
@@ -15,14 +19,22 @@ def index():
 @app.route('/submit', methods=['POST'])
 def submit_feedback():
     message = request.form.get('feedback')
-    if message:
-        # We store only the message, no IP address or timestamps for true anonymity
-        feedback_storage.append(message)
-        flash("Your voice has been heard anonymously, Comrade!", "success")
+    category = request.form.get('category', 'general')
+    
+    if message and message.strip():
+        # Store message in the specific lounge
+        feedback_storage[category].append(message)
+        flash(f"Success! Your voice is safe in the {category.capitalize()} Lounge. 🕊️", "success")
     else:
-        flash("Please enter a message before submitting.", "error")
+        flash("The message field is empty, Comrade. Please share your thoughts.", "error")
     
     return redirect(url_for('index'))
 
+@app.route('/admin-portal-sci-2026')
+def admin_view():
+    # Only you, the President, should know this URL
+    return render_template('admin.html', storage=feedback_storage)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Debug mode is ON for your development on the EliteBook
+    app.run(debug=True, port=5000)
