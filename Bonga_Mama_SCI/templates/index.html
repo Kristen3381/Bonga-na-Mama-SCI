@@ -26,9 +26,28 @@
             background: linear-gradient(45deg, #bf953f, #b38728);
             color: #0f172a;
         }
+        /* Music Pulse Animation */
+        @keyframes slow-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .animate-music { animation: slow-pulse 2s infinite; }
     </style>
 </head>
-<body class="gold-gradient min-h-screen text-slate-200">
+<body class="gold-gradient min-h-screen text-slate-200 overflow-x-hidden">
+
+    <div class="fixed bottom-8 left-8 z-50 flex items-center gap-4">
+        <button id="musicToggle" class="bg-[#bf953f]/10 hover:bg-[#bf953f]/20 border border-[#bf953f]/30 p-4 rounded-full transition-all active:scale-90 shadow-2xl group">
+            <span id="musicIcon" class="text-xl group-hover:drop-shadow-[0_0_8px_rgba(191,149,63,0.8)]">🎵</span>
+        </button>
+        <div id="musicStatus" class="hidden md:block text-[10px] uppercase tracking-[0.2em] text-[#bf953f]/60 font-bold">
+            Ambient Mode
+        </div>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
     <nav class="w-full p-6 flex justify-between items-center max-w-6xl mx-auto">
         <div class="flex items-center space-x-2">
@@ -56,23 +75,23 @@
             </p>
 
             <div class="flex gap-4">
-                <a href="/agricycle" class="gold-card p-4 rounded-2xl hover:bg-white/5 transition flex-1 text-center">
-                    <span class="gold-text font-bold">AgriCycle</span>
+                <a href="/agricycle" class="gold-card p-4 rounded-2xl hover:bg-white/5 transition flex-1 text-center group">
+                    <span class="gold-text font-bold group-hover:opacity-80">AgriCycle</span>
                 </a>
-                <a href="/wistem" class="gold-card p-4 rounded-2xl hover:bg-white/5 transition flex-1 text-center">
-                    <span class="gold-text font-bold">WiSTEM</span>
+                <a href="/wistem" class="gold-card p-4 rounded-2xl hover:bg-white/5 transition flex-1 text-center group">
+                    <span class="gold-text font-bold group-hover:opacity-80">WiSTEM</span>
                 </a>
             </div>
         </div>
 
         <div class="md:w-1/2 w-full">
             <div class="gold-card shadow-2xl rounded-[3rem] p-10 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-right from-[#bf953f] via-[#fcf6ba] to-[#bf953f]"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#bf953f] via-[#fcf6ba] to-[#bf953f]"></div>
                 
                 {% with messages = get_flashed_messages(with_categories=true) %}
                   {% if messages %}
                     {% for category, msg in messages %}
-                      <div class="mb-6 p-4 rounded-2xl text-center font-bold bg-[#bf953f]/20 text-[#fcf6ba] border border-[#bf953f]/30">{{ msg }}</div>
+                      <div class="mb-6 p-4 rounded-2xl text-center font-bold bg-[#bf953f]/20 text-[#fcf6ba] border border-[#bf953f]/30 shadow-lg">{{ msg }}</div>
                     {% endfor %}
                   {% endif %}
                 {% endwith %}
@@ -103,6 +122,7 @@
     </footer>
 
     <script>
+        // Category Selection Logic
         function setCategory(cat) {
             document.getElementById('categoryInput').value = cat;
             const lBtn = document.getElementById('ladiesBtn');
@@ -114,6 +134,23 @@
             } else {
                 gBtn.className = "flex-1 py-4 rounded-2xl border border-[#bf953f] bg-[#bf953f]/20 text-[#fcf6ba] font-bold transition-all shadow-lg";
                 lBtn.className = "flex-1 py-4 rounded-2xl border border-slate-700 bg-slate-800/50 text-slate-400 font-bold transition-all";
+            }
+        }
+
+        // Music Logic
+        const music = document.getElementById('bgMusic');
+        const mBtn = document.getElementById('musicToggle');
+        const mIcon = document.getElementById('musicIcon');
+
+        mBtn.onclick = function() {
+            if (music.paused) {
+                music.play();
+                mIcon.innerText = "⏸️";
+                mBtn.classList.add('animate-music');
+            } else {
+                music.pause();
+                mIcon.innerText = "🎵";
+                mBtn.classList.remove('animate-music');
             }
         }
     </script>
