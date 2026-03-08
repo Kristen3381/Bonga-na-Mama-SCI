@@ -98,5 +98,5 @@ def clear_inbox():
 # --- SERVER BOOT ---
 
 if __name__ == '__main__':
-    # Running in Debug mode for development on your HP EliteBook
+    # Running in Debug mode for development
     app.run(debug=True, port=5000)
