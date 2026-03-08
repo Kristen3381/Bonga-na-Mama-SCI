@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>WiSTEM MMUST | Mama SCI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiSTEM MMUST | The Golden Standard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Quicksand', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; }
+        .gold-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .gold-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(191, 149, 63, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-rose-50 font-['Quicksand'] p-8">
-    <div class="max-w-4xl mx-auto bg-white rounded-[2.5rem] shadow-xl p-10 border border-rose-100">
-        <h1 class="text-3xl font-bold text-rose-700 mb-4">WiSTEM MMUST Branch 👩‍💻</h1>
-        <p class="text-rose-900/70 mb-8 italic text-lg">"Empowering the next generation of female tech leaders."</p>
+<body class="min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-3xl w-full gold-card rounded-[3rem] p-12 text-center relative overflow-hidden shadow-2xl">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#bf953f] to-transparent"></div>
         
-        <div class="space-y-6">
-            <div class="bg-rose-50 p-6 rounded-3xl">
-                <h3 class="font-bold text-rose-800 text-xl mb-2">Our Vision</h3>
-                <p class="text-rose-700">To create a supportive ecosystem where women in the School of Computing and Informatics thrive through mentorship, hackathons, and skill-sharing.</p>
+        <div class="mb-8 inline-block bg-[#bf953f]/10 px-6 py-2 rounded-full border border-[#bf953f]/30">
+            <span class="gold-text font-bold uppercase tracking-widest text-xs">Empowering Excellence</span>
+        </div>
+
+        <h1 class="text-5xl font-bold gold-text mb-6">WiSTEM MMUST</h1>
+        <p class="text-slate-400 text-lg leading-relaxed mb-10">
+            As President of WiSTEM, my mission is to debug the gender gap in tech. We are building a sisterhood of logic, innovation, and leadership within the School of Computing.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10 text-left">
+            <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                <h3 class="gold-text font-bold mb-2">Mentorship</h3>
+                <p class="text-sm text-slate-500">Connecting female students with industry pioneers.</p>
+            </div>
+            <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                <h3 class="gold-text font-bold mb-2">Hackathons</h3>
+                <p class="text-sm text-slate-500">Creating secure spaces for women to build and lead.</p>
             </div>
         </div>
-        <a href="/" class="mt-8 inline-block bg-rose-600 text-white px-8 py-3 rounded-2xl font-bold shadow-lg shadow-rose-200">Return to Portal</a>
+
+        <a href="/" class="inline-block bg-gradient-to-r from-[#bf953f] to-[#b38728] text-slate-900 font-bold px-10 py-4 rounded-full shadow-xl shadow-[#bf953f]/20 hover:scale-105 transition-all active:scale-95">
+            Return to Command Center
+        </a>
     </div>
 </body>
 </html>
