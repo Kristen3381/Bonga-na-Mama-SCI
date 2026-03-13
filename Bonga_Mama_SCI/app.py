@@ -58,7 +58,6 @@ def admin_view():
         # Unauthorized access attempt
         flash("Access Denied: Invalid Security Key.", "error")
         return redirect(url_for('index'))
-
 @app.route('/download-report')
 def download_report():
     user_key = request.args.get('key')
