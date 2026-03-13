@@ -82,7 +82,6 @@ def download_report():
         mimetype="text/plain",
         headers={"Content-disposition": "attachment; filename=SCI_Feedback_Report.txt"}
     )
-
 @app.route('/clear-inbox')
 def clear_inbox():
     user_key = request.args.get('key')
