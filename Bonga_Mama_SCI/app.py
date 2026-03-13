@@ -96,7 +96,6 @@ def clear_inbox():
     return redirect(url_for('index'))
 
 # --- SERVER BOOT ---
-
 if __name__ == '__main__':
     # Running in Debug mode for development
     app.run(debug=True, port=5000)
