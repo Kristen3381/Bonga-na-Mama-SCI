@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, flash, redirect, url_for, Response
 import os
-
 app = Flask(__name__)
 # Generates a fresh secret key for session security every time the server restarts
 app.secret_key = os.urandom(24)
