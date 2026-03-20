@@ -14,7 +14,6 @@ feedback_storage = {
     "gents": [],
     "general": []
 }
-
 # --- PUBLIC ROUTES ---
 
 @app.route('/')
